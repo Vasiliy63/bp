@@ -1,0 +1,12 @@
+
+- var nav = { 'Menu 1': index.navHref }
+
+ul
+	each href, name in nav
+		- if (href == currentPage.navHref)
+			li.active
+				a(href= href)= name
+		- else
+			li
+				a(href= href)= name
+

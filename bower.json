@@ -1,0 +1,25 @@
+{
+  "name": "bp",
+  "version": "0.0.1",
+  "authors": [
+    "rosivanov <ros.g6w@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "jeet.gs": "~6.1.2",
+	"breakpoint-sass": "~2.5.0",
+	"normalize": "https://gist.github.com/e191a1e1d3a5c8da8b2b.git",
+	"reset": "https://gist.github.com/c350d0ca3b5572bcec46.git",
+	"print": "https://gist.github.com/451ad9d7f622ff8c1315.git",
+	"modernizr": "https://gist.github.com/0e08377509410c71d45a.git",
+	"modal": "https://gist.github.com/b690d2621112f703b3d8.git"
+  }
+}

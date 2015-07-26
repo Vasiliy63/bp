@@ -1,0 +1,61 @@
+include mixins
+include config
+
+//- Get Current Page
+//- comes from page file
+block currentpage
+
+
+doctype html
+//- <!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+html(class='no-js', lang= lang)&attributes( currentPage.og.showOG ? {prefix: currentPage.og.prefix} : '' )
+	head
+		meta(charset="UTF-8")
+		meta(http-equiv="X-UA-Compatible", content="IE=edge")
+		meta(name="viewport", content="width=device-width, initial-scale=1")
+		meta(name='author', content='Ros Ivanov')
+		meta(name='robots', content='index')
+
+		// Title
+		block title
+			title= currentPage.title
+
+		// Favicon
+		block favicon
+			if (favicon.showFavicon)
+				+favicon(favicon.path)
+
+		// SEO
+		block seo
+			+seo(currentPage.description, currentPage.keywords)
+
+		// OG
+		block og
+			if (currentPage.og.showOG)
+				+og(
+				currentPage.og.type,
+				currentPage.og.title,
+				currentPage.og.description,
+				currentPage.og.url,
+				currentPage.og.image,
+				currentPage.og.locale)
+
+		// Styles
+		block styles
+			// build:css css/style.css
+			link(rel="stylesheet", href="../css/style.css")
+			// endbuild
+
+		// Scripts In Head
+		block jsinhead
+
+	body
+		+browserhappy(lang)
+
+		block content
+
+		// Scripts In Footer
+		block jsinfooter
+			// build:js js/init.js
+			script(src='../js/jsconcat/main.js')
+			// endbuild

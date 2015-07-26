@@ -1,0 +1,72 @@
+//===============================
+// Project Utilities
+//===============================
+
+
+//===============================
+// CONFIG
+//===============================
+
+// Start From bootstrap | reset | normalize
+$start-from: none;
+$print: false;
+
+// Base Settings
+$browser-fs: 16px; // used for rem, em functions
+$html-fs: 1em;
+$body-fs: 1rem;
+$html-bg: #fff;
+$body-fc: #000;
+$body-ff: sans-serif;
+
+// Optional Settings
+$body-lh: 1;
+$box-sizing: true;
+$fontSmooth: true;
+
+
+//===============================
+// responsive settings
+//===============================
+// rem для всего, em внутри компонентов
+
+// breakpoints
+// em в media queries считается от базового fs браузера, который меняется только через настройки
+$xxs: 480px;
+$xs: 640px;
+$sm: 768px;
+$md: 1024px;
+$lg: 1280px;
+$xlg: 1366px;
+
+// container mq and width
+$container-mq-and-width: (
+	$xxs: 400px,
+	$xs: 500px,
+	$sm: 600px,
+	$md: 800px,
+	$lg: 1000px,
+	$xlg: 1800px
+);
+$container-gutter: 10px;
+$vw-scale: ($xlg: 1.25vw); // начиная с ширины xlg заменить html fs 1em на коэфиц 1.25vw
+$jeet-gutter: 0; // override jeet default gutters
+
+
+//===============================
+// DO $start-from
+//===============================
+
+@if $start-from == 'reset' {
+	$body-lh: null;
+	//@import '../components/reset/reset';
+}
+@else if $start-from == 'normalize' {
+	//@import '../components/normalize/normalize';
+}
+@else if $start-from == 'bootstrap' {
+	$box-sizing: false;
+}
+@if $print == true {
+	//@import '../components/print/print';
+}

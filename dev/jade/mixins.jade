@@ -1,0 +1,64 @@
+//- Open Graph
+mixin og(ogtype, ogtitle, ogdesc, ogurl, ogimg, ogloc)
+	meta(property="og:type" content=ogtype)
+	meta(property="og:title" content=ogtitle)
+	meta(property="og:description" content=ogdesc)
+	meta(property="og:url" content=ogurl)
+	meta(property="og:image" content=ogimg)
+	meta(property="og:locale" content=ogloc)
+
+
+//- Seo
+mixin seo(desc, tags)
+	- if (desc)
+		meta(name="description" content=desc)
+	- if (tags)
+		meta(name="keywords" content=tags)
+
+
+//- Css
+mixin css(path)
+	each val in path
+		- if (~val.indexOf('.css'))
+			link(rel="stylesheet", href = val)
+		- else
+			link(rel="stylesheet", href = val+'.css')
+
+
+//- Js
+mixin js(path)
+	each val in path
+		- if (~val.indexOf('.js'))
+			script(src = val)
+		- else
+			script(src = val+'.js')
+
+
+//- Favicons
+mixin favicon(path)
+	link(rel='apple-touch-icon', sizes='57x57', href='#{path}/apple-touch-icon-57x57.png')
+	link(rel='apple-touch-icon', sizes='114x114', href='#{path}/apple-touch-icon-114x114.png')
+	link(rel='apple-touch-icon', sizes='72x72', href='#{path}/apple-touch-icon-72x72.png')
+	link(rel='apple-touch-icon', sizes='144x144', href='#{path}/apple-touch-icon-144x144.png')
+	link(rel='apple-touch-icon', sizes='60x60', href='#{path}/apple-touch-icon-60x60.png')
+	link(rel='apple-touch-icon', sizes='120x120', href='#{path}/apple-touch-icon-120x120.png')
+	link(rel='apple-touch-icon', sizes='76x76', href='#{path}/apple-touch-icon-76x76.png')
+	link(rel='apple-touch-icon', sizes='152x152', href='#{path}/apple-touch-icon-152x152.png')
+	link(rel='apple-touch-icon', sizes='180x180', href='#{path}/apple-touch-icon-180x180.png')
+	link(rel='shortcut icon', href='#{path}/favicon.ico')
+	link(rel='icon', type='image/png', href='#{path}/favicon-192x192.png', sizes='192x192')
+	link(rel='icon', type='image/png', href='#{path}/favicon-160x160.png', sizes='160x160')
+	link(rel='icon', type='image/png', href='#{path}/favicon-96x96.png', sizes='96x96')
+	link(rel='icon', type='image/png', href='#{path}/favicon-16x16.png', sizes='16x16')
+	link(rel='icon', type='image/png', href='#{path}/favicon-32x32.png', sizes='32x32')
+	meta(name='msapplication-TileColor', content='#ffc40d')
+	meta(name='msapplication-TileImage', content='#{path}/mstile-144x144.png')
+	meta(name='msapplication-config', content='#{path}/browserconfig.xml')
+
+
+
+//- Browserhappy
+mixin browserhappy(lang)
+	case lang
+		when 'ru': <!--[if lt IE 9]><p id="browsehappy">Вы используете <strong>устаревшую</strong> версию браузера. Поэтому корректность отображения сайта не гарантируется. Скачать новый брузер можно на сайте <a href="http://browsehappy.com/" target='_blank'>browsehappy.com</a>. <button type='button' onclick=' var browseHappy = getElementById("browsehappy"); browseHappy.style.display = "none"; '>Закрыть</button></p><![endif]-->
+		when 'en': <!--[if lt IE 9]><p id="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" target='_blank'>upgrade browser</a> to improve your experience. <button type='button' onclick=' var browseHappy = getElementById("browsehappy"); browseHappy.style.display = "none"; '>Close</button></p><![endif]-->
