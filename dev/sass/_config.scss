@@ -7,10 +7,6 @@
 // CONFIG
 //===============================
 
-// Start From bootstrap | reset | normalize
-$start-from: none;
-$print: false;
-
 // Base Settings
 $browser-fs: 16px; // used for rem, em functions
 $html-fs: 1em;
@@ -23,7 +19,6 @@ $body-ff: sans-serif;
 $body-lh: 1;
 $box-sizing: true;
 $fontSmooth: true;
-
 
 //===============================
 // responsive settings
@@ -50,23 +45,33 @@ $container-mq-and-width: (
 );
 $container-gutter: 10px;
 $vw-scale: ($xlg: 1.25vw); // начиная с ширины xlg заменить html fs 1em на коэфиц 1.25vw
-$jeet-gutter: 0; // override jeet default gutters
 
 
 //===============================
-// DO $start-from
+// Third party
 //===============================
 
-@if $start-from == 'reset' {
-	$body-lh: null;
-	//@import '../components/reset/reset';
-}
-@else if $start-from == 'normalize' {
-	//@import '../components/normalize/normalize';
-}
-@else if $start-from == 'bootstrap' {
-	$box-sizing: false;
-}
-@if $print == true {
-	//@import '../components/print/print';
-}
+// Jeet
+//@import "../components/jeet.gs/scss/jeet/index";
+//$jeet-gutter: 0; // override jeet default gutters
+
+// Breakpoint
+//@import "../components/breakpoint-sass/stylesheets/breakpoint";
+//@mixin bp ($args...) {
+//	@include breakpoint($args...) {
+//		@content
+//	}
+//}
+
+// Normalize
+//@import '../components/normalize/normalize';
+
+// Reset
+//$body-lh: null;
+//@import '../components/reset/reset';
+
+// Bootstrap
+//$box-sizing: false;
+
+// Print
+//@import '../components/print/print';

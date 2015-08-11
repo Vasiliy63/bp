@@ -1,10 +1,3 @@
-// call breakpoint lib via bp shortcut
-@mixin bp ($args...) {
-	@include breakpoint($args...) {
-		@content
-	}
-}
-
 // rem, em
 @function em($pxval, $base: $browser-fs){
 	@return ($pxval / $base) * 1em;
@@ -44,40 +37,8 @@
 }
 
 // HOVER
-@mixin hover {
-  &:hover, &:active, &:focus {@content}
-}
+@mixin hover { &:hover, &:active { @content } }
+@mixin focus { &:focus { @content } }
 
 // SMOOTH
-@mixin smooth($prop: all, $int: 0.3s) {
-    transition: $prop $int;
-}
-
-
-// Idiot grids
-// @include idiotgrid(112px 68px, 160px 70px, last);
-@mixin idiotgrid($map...){
-	$container: 1000px;
-	$col-sum: 0;
-	$gutter-sum: 0;
-	$n: 1;
-	@each $col-width, $gutter-width in $map{
-		@if ($col-width != last) {
-			&:nth-child(#{$n}) {
-				float: left;
-				width: ($col-width / $container) * 100%;
-				margin-right: ($gutter-width / $container) * 100%;
-			}
-			$col-sum: $col-sum + $col-width;
-			$gutter-sum: $gutter-sum + $gutter-width;
-		}
-		@else {
-			&:nth-child(#{$n}) {
-				float: left;
-				width: (($container - ($col-sum + $gutter-sum)) / $container) * 100%;
-				margin-right: 0;
-			}
-		}
-		$n: $n + 1;
-	}
-}
+@mixin smooth($int: .3s, $prop: all) { transition: $prop $int; }
