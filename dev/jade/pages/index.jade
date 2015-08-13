@@ -1,7 +1,16 @@
 extends ../template
 
-block currentpage
-	- var currentPage = index
+block pageInfo
+	- var page = {}
+	- page.id = 'index'
+	- page.title = 'Index'
+	//- seo
+	- page.description = page.title + ' page description'
+	- page.keywords = page.title + ' page keywords'
+
+block og
+	//- open graph
+	//+og('type', 'title', 'description', 'url', 'img', 'locale')
 
 block content
 	.container

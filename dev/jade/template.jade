@@ -1,14 +1,11 @@
 include mixins
 include config
 
-//- Get Current Page
-//- comes from page file
-block currentpage
-
+block pageInfo
 
 doctype html
 //- <!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
-html(class='no-js', lang= lang)&attributes( currentPage.og.showOG ? {prefix: currentPage.og.prefix} : '' )
+html(class='no-js', lang= lang)&attributes( page.ogShow ? {prefix: page.ogPrefix} : '' )
 	head
 		meta(charset="UTF-8")
 		meta(http-equiv="X-UA-Compatible", content="IE=edge")
@@ -17,28 +14,17 @@ html(class='no-js', lang= lang)&attributes( currentPage.og.showOG ? {prefix: cur
 		meta(name='robots', content='index')
 
 		// Title
-		block title
-			title= currentPage.title
-
-		// Favicon
-		block favicon
-			if (favicon.showFavicon)
-				+favicon(favicon.path)
+		title= page.title
 
 		// SEO
-		block seo
-			+seo(currentPage.description, currentPage.keywords)
+		+seo(page.description, page.keywords)
+
+		// Favicon
+		if (favicon.show)
+			+favicon(favicon.path)
 
 		// OG
 		block og
-			if (currentPage.og.showOG)
-				+og(
-				currentPage.og.type,
-				currentPage.og.title,
-				currentPage.og.description,
-				currentPage.og.url,
-				currentPage.og.image,
-				currentPage.og.locale)
 
 		// Styles
 		block styles
