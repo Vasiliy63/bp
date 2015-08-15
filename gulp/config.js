@@ -26,7 +26,7 @@ module.exports = {
 
 		img: {
 			original: 'dev/img/original/*',
-			ready: 'dev/img/ready/',
+			ready: 'dev/img/ready',
 			sprite: {
 				src: 'dev/img/sprite/*.png',
 				imgName: 'sprite.png',

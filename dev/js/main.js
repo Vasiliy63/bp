@@ -6,6 +6,4 @@
 		return (document.querySelectorAll(selector).length>1) ? document.querySelectorAll(selector) : document.querySelector(selector);
 	}
 
-	var a = S('.a');
-
 })();

@@ -9,7 +9,8 @@ var gulp = require('gulp'),
 	minifyCss = require('gulp-minify-css'),
 	uglify = require('gulp-uglify'),
 	htmlmin = require('gulp-htmlmin'),
-	uncss = require('gulp-uncss');
+	uncss = require('gulp-uncss'),
+	replace = require('gulp-replace-path');
 
 
 //clean build
@@ -27,6 +28,7 @@ gulp.task('build', function () {
         .pipe(useref())
 		.pipe(newer(config.build.root))
         .pipe(gulpif('*.html', htmlmin({collapseWhitespace: true})))
+        .pipe(gulpif('*.html', replace('../img/ready', 'img')))
         .pipe(gulpif('*.css', uncss({
 			html: [config.dev.html + '/**/*.html']
 		})))
@@ -40,7 +42,7 @@ gulp.task('build', function () {
 			dest: config.build.font
 		},
 		{
-			src: config.dev.img.ready,
+			src: config.dev.img.ready + '/*',
 			dest: config.build.img
 		}
 	];
@@ -50,4 +52,3 @@ gulp.task('build', function () {
 			.pipe(gulp.dest(path[i].dest));
 	}
 });
-
