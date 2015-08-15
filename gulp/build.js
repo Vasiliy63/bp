@@ -9,7 +9,6 @@ var gulp = require('gulp'),
 	minifyCss = require('gulp-minify-css'),
 	uglify = require('gulp-uglify'),
 	htmlmin = require('gulp-htmlmin'),
-	uncss = require('gulp-uncss'),
 	replace = require('gulp-replace-path');
 
 
@@ -29,10 +28,8 @@ gulp.task('build', function () {
 		.pipe(newer(config.build.root))
         .pipe(gulpif('*.html', htmlmin({collapseWhitespace: true})))
         .pipe(gulpif('*.html', replace('../img/ready', 'img')))
-        .pipe(gulpif('*.css', uncss({
-			html: [config.dev.html + '/**/*.html']
-		})))
         .pipe(gulpif('*.css', minifyCss()))
+        .pipe(gulpif('*.css', replace('../img/ready', '../img')))
 		.pipe(gulpif('*.js', uglify()))
         .pipe(gulp.dest(config.build.root));
 
