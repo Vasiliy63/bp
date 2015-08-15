@@ -34,6 +34,9 @@ html(class='no-js', lang= lang)&attributes( page.ogShow ? {prefix: page.ogPrefix
 
 		// Scripts In Head
 		block jsinhead
+			// build:js js/modernizr.js
+			script(src="../components/modernizr/modernizr.js", async)
+			// endbuild
 
 	body
 		+browserhappy(lang)

@@ -36,6 +36,9 @@ gulp.task('build', function () {
 		.pipe(gulpif('*.js', uglify()))
         .pipe(gulp.dest(config.build.root));
 
+	gulp.src('dev/components/modernizr/modernizr.js')
+	.pipe(gulp.dest(config.build.js));
+
 	var path = [
 		{
 			src: config.dev.font,
