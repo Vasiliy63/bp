@@ -5,7 +5,8 @@ var gulp = require('gulp'),
 	spritesmith = require('gulp.spritesmith'),
 	imagemin = require('gulp-imagemin'),
 	newer = require('gulp-newer'),
-	base64 = require('gulp-base64');
+	base64 = require('gulp-base64'),
+	webp = require('gulp-webp');
 
 
 //sprite
@@ -29,15 +30,17 @@ gulp.task('sprite', function () {
 });
 
 
-//image min
+//image min + webp
 gulp.task('img', function() {
 	gulp.src(config.dev.img.original)
-		.pipe(newer(config.dev.img.ready))
-		.pipe(imagemin({
-			optimizationLevel: 3, // default val
-			progressive: true
-		}))
-		.pipe(gulp.dest(config.dev.img.ready));
+	.pipe(newer(config.dev.img.ready))
+	.pipe(imagemin({
+		optimizationLevel: 3, // default val
+		progressive: true
+	}))
+	.pipe(gulp.dest(config.dev.img.ready))
+	.pipe(webp())
+	.pipe(gulp.dest(config.dev.img.ready));
 });
 
 

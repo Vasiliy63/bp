@@ -42,3 +42,15 @@
 
 // SMOOTH
 @mixin smooth($int: .3s, $prop: all) { transition: $prop $int; }
+
+// webp
+@mixin webp($path) {
+	.no-js &, .no-webp & {
+		background-image: url($path);
+	}
+	.webp & {
+		$pathLength: str-length($path) - 4;
+		$path: str-slice($path, 1, $pathLength);
+		background-image: url($path + '.webp');
+	}
+}

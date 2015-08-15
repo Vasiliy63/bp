@@ -34,6 +34,14 @@ mixin js(path)
 			script(src = val+'.js')
 
 
+//- webp
+mixin webp(path)
+	- var pathSlice = path.slice(0, -4);
+	picture
+		source(srcset= pathSlice+'.webp', type='image/webp')
+		img(src= path, alt="img")
+
+
 //- Favicons
 mixin favicon(path)
 	link(rel='apple-touch-icon', sizes='57x57', href='#{path}/apple-touch-icon-57x57.png')
