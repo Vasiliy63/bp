@@ -3,13 +3,13 @@
 var gulp = require('gulp'),
 	config = require('./config'),
 	del = require('del'),
-	useref = require('gulp-useref'),
-	gulpif = require('gulp-if'),
-	newer = require('gulp-newer'),
-	minifyCss = require('gulp-minify-css'),
 	uglify = require('gulp-uglify'),
-	htmlmin = require('gulp-htmlmin'),
-	replace = require('gulp-replace-path');
+	replace = require('gulp-replace-path'),
+	newer = require('gulp-newer'),
+	sass = require('gulp-sass'),
+	bulkSass = require('gulp-sass-bulk-import'),
+	autoprefixer = require('gulp-autoprefixer'),
+	jade = require('gulp-jade');
 
 
 //clean build
@@ -19,19 +19,25 @@ gulp.task('build:del', function () {
 
 //build
 gulp.task('build', function () {
-    var assets = useref.assets();
 
-    gulp.src(config.dev.html + '/**/*.html')
-        .pipe(assets)
-		.pipe(assets.restore())
-        .pipe(useref())
-		.pipe(newer(config.build.root))
-        .pipe(gulpif('*.html', htmlmin({collapseWhitespace: true})))
-        .pipe(gulpif('*.html', replace('../img/ready', 'img')))
-        .pipe(gulpif('*.css', minifyCss()))
-        .pipe(gulpif('*.css', replace('../img/ready', '../img')))
-		.pipe(gulpif('*.js', uglify()))
-        .pipe(gulp.dest(config.build.root));
+	gulp.src(config.dev.sass)
+	.pipe(bulkSass())
+	.pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+	.pipe(autoprefixer({ browsers: ['last 4 versions'], cascade: false }))
+	.pipe(replace('../img/ready', '../img'))
+	.pipe(gulp.dest(config.build.css))
+
+	gulp.src(config.dev.jade)
+	.pipe(jade())
+	.pipe(replace('../img/ready', 'img'))
+	.pipe(replace('../css', 'css'))
+	.pipe(replace('../js/jsconcat', 'js'))
+	.pipe(replace('../components/modernizr', 'js'))
+	.pipe(gulp.dest(config.build.root))
+
+	gulp.src(config.dev.js.dest + '/*')
+	.pipe(uglify())
+	.pipe(gulp.dest(config.build.js))
 
 	gulp.src('dev/components/modernizr/modernizr.js')
 	.pipe(gulp.dest(config.build.js));

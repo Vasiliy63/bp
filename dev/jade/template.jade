@@ -28,15 +28,11 @@ html(class='no-js', lang= lang)&attributes( page.ogShow ? {prefix: page.ogPrefix
 
 		// Styles
 		block styles
-			// build:css css/style.css
 			link(rel="stylesheet", href="../css/style.css")
-			// endbuild
 
 		// Scripts In Head
-		block jsinhead
-			// build:js js/modernizr.js
+		block jshead
 			script(src="../components/modernizr/modernizr.js", async)
-			// endbuild
 
 	body
 		+browserhappy(lang)
@@ -44,7 +40,5 @@ html(class='no-js', lang= lang)&attributes( page.ogShow ? {prefix: page.ogPrefix
 		block content
 
 		// Scripts In Footer
-		block jsinfooter
-			// build:js js/main.js
+		block jsfooter
 			script(src='../js/jsconcat/main.js')
-			// endbuild
