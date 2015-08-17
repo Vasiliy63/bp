@@ -1,5 +1,4 @@
-// input reset placeholder
-%input{
+%input-reset {
     display: inline-block;
     position: relative;
     margin: 0;
@@ -7,8 +6,7 @@
     border: none;
 }
 
-// btn reset placeholder
-%btn{
+%btn-reset {
     display: inline-block;
     position: relative;
     margin: 0;
@@ -21,15 +19,13 @@
     outline: none;
 }
 
-// LIST UNSTYLED
-%list-unstyle{
+%list-reset{
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-// Link Unstyled
-%link-unstyle{
+%link-reset{
 	color: inherit;
 	text-decoration: none;
 }
@@ -38,6 +34,13 @@
 	margin-left: auto;
 	margin-right: auto;
 }
+
+%hide-text {
+	overflow: hidden;
+	text-indent: 100%;
+	white-space: nowrap;
+}
+
 
 // IMAGE VERTICAL ALIGN
 %v-align {
