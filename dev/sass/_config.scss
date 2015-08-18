@@ -1,11 +1,7 @@
-//===============================
-// Project Utilities
-//===============================
+/**
+* ## Шрифты
+*/
 
-
-//===============================
-// CONFIG
-//===============================
 
 // Base Settings
 $browser-fs: 16px; // used for rem, em functions
@@ -20,21 +16,31 @@ $body-lh: 1;
 $box-sizing: true;
 $fontSmooth: true;
 
-//===============================
-// responsive settings
-//===============================
+/**
+* ## Адаптив
+*/
 // rem для всего, em внутри компонентов
-
-// breakpoints
 // em в media queries считается от базового fs браузера, который меняется только через настройки
+/**
+* #### Точки
+* `$xxs: 480px; $xs: 640px; $sm: 768px; $md: 1024px; $lg: 1280px; $xlg: 1366px;`
+*
+* px переведены в em
+* ***
+*/
 $xxs: 480px;
 $xs: 640px;
 $sm: 768px;
 $md: 1024px;
 $lg: 1280px;
 $xlg: 1366px;
-
-// container mq and width
+/**
+* #### .container ширина и медиа
+* `$xxs: 400px, $xs: 500px, $sm: 600px, $md: 800px, $lg: 1000px, $xlg: 1800px`
+*
+* px переведены в em
+* ***
+*/
 $container-mq-and-width: (
 	$xxs: 400px,
 	$xs: 500px,
@@ -44,18 +50,21 @@ $container-mq-and-width: (
 	$xlg: 1800px
 );
 $container-gutter: 10px;
-$vw-scale: ($xlg: 1.25vw); // начиная с ширины xlg заменить html fs 1em на коэфиц 1.25vw
+/**
+* Начиная с ширины `xlg` `html {font-size 1em}` меняется на коэфициент 1.25vw
+*/
+$vw-scale: ($xlg: 1.25vw);
 
 
-//===============================
-// Third party
-//===============================
 
-// Jeet
+// Components
+// ----------------
+
+//jeet
 //@import "../components/jeet.gs/scss/jeet/index";
 //$jeet-gutter: 0; // override jeet default gutters
 
-// Breakpoint
+// breakpoint
 //@import "../components/breakpoint-sass/stylesheets/breakpoint";
 //@mixin bp ($args...) {
 //	@include breakpoint($args...) {
@@ -63,15 +72,15 @@ $vw-scale: ($xlg: 1.25vw); // начиная с ширины xlg заменит�
 //	}
 //}
 
-// Normalize
+// normalize
 //@import '../components/normalize/normalize';
 
-// Reset
+// reset
 //$body-lh: null;
 //@import '../components/reset/reset';
 
-// Bootstrap
+// bootstrap
 //$box-sizing: false;
 
-// Print
+// print
 //@import '../components/print/print';
