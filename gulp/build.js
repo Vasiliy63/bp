@@ -9,7 +9,10 @@ var gulp = require('gulp'),
 	sass = require('gulp-sass'),
 	bulkSass = require('gulp-sass-bulk-import'),
 	autoprefixer = require('gulp-autoprefixer'),
-	jade = require('gulp-jade');
+	jade = require('gulp-jade'),
+	webpcss = require("gulp-webpcss"),
+	postcss = require('gulp-postcss'),
+	pixrem = require('pixrem');
 
 
 //clean build
@@ -19,12 +22,17 @@ gulp.task('build:del', function () {
 
 //build
 gulp.task('build', function () {
+	var processors = [
+		pixrem
+	];
 
 	gulp.src(config.dev.sass)
 	.pipe(bulkSass())
 	.pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
-	.pipe(autoprefixer({ browsers: ['last 4 versions'], cascade: false }))
+	.pipe(webpcss())
 	.pipe(replace('../img/ready', '../img'))
+	.pipe(postcss(processors))
+	.pipe(autoprefixer({ browsers: ['last 4 versions'], cascade: false }))
 	.pipe(gulp.dest(config.build.css))
 
 	gulp.src(config.dev.jade)
