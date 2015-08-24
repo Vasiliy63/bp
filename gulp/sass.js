@@ -10,20 +10,23 @@ var gulp = require('gulp'),
 	autoprefixer = require('gulp-autoprefixer'),
 	notify = require("gulp-notify"),
 	plumber = require('gulp-plumber'),
-	webpcss = require("gulp-webpcss");
+	webpcss = require("gulp-webpcss"),
+	postcss = require('gulp-postcss'),
+	lost = require('lost');
 
 gulp.task('sass', function () {
 
 	gulp.src(config.dev.sass)
-		.pipe(plumber({errorHandler: notify.onError('<%= error.message %>')}))
-		.pipe(sourcemaps.init())
-		.pipe(bulkSass())
-		.pipe(sass({ outputStyle: 'extended' }).on('error', sass.logError))
-		.pipe(sourcemaps.write({includeContent: false}))
-		.pipe(sourcemaps.init({loadMaps: true}))
-		.pipe(webpcss())
-		.pipe(autoprefixer({ browsers: ['last 4 versions'], cascade: false }))
-		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest(config.dev.css))
-		.pipe(reload({stream: true}));
+	.pipe(plumber({errorHandler: notify.onError('<%= error.message %>')}))
+	.pipe(sourcemaps.init())
+	.pipe(bulkSass())
+	.pipe(sass({ outputStyle: 'extended' }).on('error', sass.logError))
+	.pipe(sourcemaps.write({includeContent: false}))
+	.pipe(sourcemaps.init({loadMaps: true}))
+	.pipe(webpcss())
+	.pipe(postcss([ lost ]))
+	.pipe(autoprefixer({ browsers: ['last 3 versions'], cascade: false }))
+	.pipe(sourcemaps.write('./'))
+	.pipe(gulp.dest(config.dev.css))
+	.pipe(reload({stream: true}));
 });
