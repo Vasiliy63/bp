@@ -41,6 +41,15 @@
 	white-space: nowrap;
 }
 
+%box-sizing {
+	*, *:after, *:before {
+		box-sizing: inherit;
+	}
+	html {
+		box-sizing: border-box;
+	}
+}
+
 
 // IMAGE VERTICAL ALIGN
 %v-align {

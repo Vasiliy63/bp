@@ -1,18 +1,12 @@
-// Box-sizing reset
-@if $box-sizing == true {
-	*, *:after, *:before {
-		box-sizing: inherit;
-	}
-	html {
-		box-sizing: border-box;
-	}
-}
+@if $box-sizing == true { @extend %box-sizing; } // box-sizing reset
 
 html {
     font-size: $html-fs;
 	background-color: $html-bg;
+	font-smoothing: antialiased; //safari smooth font
+	text-size-adjust: 100%; //prevent fs scale on ios safari
 
-	// changes fs to vw items
+	// change fs to vw items
 	@if $vw-scale {
 		@each $bp, $vw in $vw-scale{
 			@media (min-width: em($bp)) {
@@ -26,13 +20,7 @@ body {
     font-size: $body-fs;
     font-family: $body-ff;
     color: $body-fc;
-    line-height: $body-lh;
-
-	// Font Smooth
-	@if $fontSmooth == true {
-		font-smoothing: antialiased;
-		-webkit-font-smoothing: antialiased;
-	}
+    line-height: $lh;
 }
 
 // Browserhappy
