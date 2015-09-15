@@ -1,35 +1,29 @@
 include mixins
-include config
 
 block pageInfo
 
 doctype html
 //- <!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
-html(class='no-js', lang= lang)&attributes( page.ogShow ? {prefix: page.ogPrefix} : '' )
+html(class='no-js', lang='ru')&attributes( page.ogShow ? {prefix: page.ogPrefix} : '' )
 	head
 		meta(charset="UTF-8")
 		meta(http-equiv="X-UA-Compatible", content="IE=edge")
 		meta(name="viewport", content="width=device-width, initial-scale=1")
-		meta(name='author', content='Ros Ivanov')
+		meta(name='author', content='@ros_ivanov')
 		meta(name='robots', content='index')
 
 		// Title
 		title= page.title
-
 		// SEO
 		+seo(page.description, page.keywords)
-
 		// Favicon
-		if (favicon.show)
-			+favicon(favicon.path)
-
+		//+favicon('img/favicon')
 		// OG
 		block og
 
 		// Styles
 		block styles
 			link(rel="stylesheet", href="../css/style.css")
-
 		// Scripts In Head
 		block jshead
 			script(src="../components/modernizr/modernizr.js", async)
