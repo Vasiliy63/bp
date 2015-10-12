@@ -1,4 +1,12 @@
-@if $box-sizing == true { @extend %box-sizing; } // box-sizing reset
+// box-sizing reset
+@if $box-sizing == true {
+	*, *:after, *:before {
+		box-sizing: inherit;
+	}
+	html {
+		box-sizing: border-box;
+	}
+}
 
 html {
     font-size: $html-fs;

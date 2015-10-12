@@ -17,6 +17,7 @@
     text-decoration: none;
 	color: inherit;
     outline: none;
+	background-color: transparent;
 }
 
 %list-reset{
@@ -39,15 +40,6 @@
 	overflow: hidden;
 	text-indent: 100%;
 	white-space: nowrap;
-}
-
-%box-sizing {
-	*, *:after, *:before {
-		box-sizing: inherit;
-	}
-	html {
-		box-sizing: border-box;
-	}
 }
 
 
