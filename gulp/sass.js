@@ -10,8 +10,8 @@ var gulp = require('gulp'),
 	autoprefixer = require('gulp-autoprefixer'),
 	notify = require("gulp-notify"),
 	plumber = require('gulp-plumber'),
-	webpcss = require("gulp-webpcss"),
 	postcss = require('gulp-postcss'),
+	webpcss = require("webpcss"),
 	lost = require('lost');
 
 gulp.task('sass', function () {
@@ -24,7 +24,7 @@ gulp.task('sass', function () {
 	.pipe(sourcemaps.write({includeContent: false}))
 	.pipe(sourcemaps.init({loadMaps: true}))
 	.pipe(webpcss())
-	.pipe(postcss([ lost ]))
+	.pipe(postcss([ lost, webpcss.default ]))
 	.pipe(autoprefixer({ browsers: ['last 3 versions'], cascade: false }))
 	.pipe(sourcemaps.write('./'))
 	.pipe(gulp.dest(config.dev.css))

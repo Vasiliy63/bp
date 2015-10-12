@@ -10,8 +10,9 @@ var gulp = require('gulp'),
 	bulkSass = require('gulp-sass-bulk-import'),
 	autoprefixer = require('gulp-autoprefixer'),
 	jade = require('gulp-jade'),
-	webpcss = require("gulp-webpcss"),
 	postcss = require('gulp-postcss'),
+	webpcss = require("webpcss"),
+	lost = require('lost'),
 	pixrem = require('pixrem');
 
 
@@ -23,7 +24,7 @@ gulp.task('build:del', function () {
 //build
 gulp.task('build', function () {
 	var processors = [
-		pixrem
+		pixrem, lost, webpcss.default
 	];
 
 	gulp.src(config.dev.sass)
