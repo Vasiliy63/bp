@@ -22,37 +22,37 @@ $box-sizing: true;
 // em в media queries считается от базового fs браузера, который меняется только через настройки
 /**
 * #### Точки
-* `$xxs: 480px; $xs: 640px; $sm: 768px; $md: 1024px; $lg: 1280px; $xlg: 1366px;`
+* `$w480: 480px; $w640: 640px; $w768: 768px; $w1024: 1024px; $w1280: 1280px; $w1366: 1366px;`
 *
 * px переведены в em
 * ***
 */
-$xxs: 480px;
-$xs: 640px;
-$sm: 768px;
-$md: 1024px;
-$lg: 1280px;
-$xlg: 1366px;
+$w480: 480px;
+$w640: 640px;
+$w768: 768px;
+$w1024: 1024px;
+$w1280: 1280px;
+$w1366: 1366px;
 /**
 * #### .container ширина и медиа
-* `$xxs: 400px, $xs: 500px, $sm: 600px, $md: 800px, $lg: 1000px, $xlg: 1800px`
+* `$w480: 400px, $w640: 500px, $w768: 600px, $w1024: 800px, $w1280: 1000px, $w1366: 1800px`
 *
 * px переведены в em
 * ***
 */
 $container-mq-and-width: (
-	$xxs: 400px,
-	$xs: 500px,
-	$sm: 600px,
-	$md: 800px,
-	$lg: 1000px,
-	$xlg: 1800px
+	$w480: 400px,
+	$w640: 500px,
+	$w768: 600px,
+	$w1024: 800px,
+	$w1280: 1000px,
+	$w1366: 1800px
 );
 $container-gutter: 10px;
 /**
-* Начиная с ширины `xlg` `html {font-size 1em}` меняется на коэфициент 1.25vw
+* Начиная с ширины `w1366` `html {font-size 1em}` меняется на коэфициент 1.25vw
 */
-$vw-scale: ($xlg: 1.25vw);
+$vw-scale: ($w1366: 1.25vw);
 
 
 

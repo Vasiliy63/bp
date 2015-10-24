@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     border: none;
+	background-color: transparent;
 }
 
 %btn-reset {
@@ -36,7 +37,7 @@
 	margin-right: auto;
 }
 
-%hide-text {
+%text-hide {
 	overflow: hidden;
 	text-indent: 100%;
 	white-space: nowrap;
