@@ -1,14 +1,14 @@
 'use strict';
 
 var gulp = require('gulp'),
-	config = require('./config'),
+	path = require('./path'),
 	browserSync = require('browser-sync'),
 	reload = browserSync.reload,
 	include = require('gulp-include');
 
 gulp.task('js', function() {
-	gulp.src(config.dev.js.src)
+	gulp.src(path.dev.js.src)
 		.pipe(include())
-		.pipe(gulp.dest(config.dev.js.dest))
+		.pipe(gulp.dest(path.dev.js.dest))
 		.pipe(reload({stream: true}));
 });

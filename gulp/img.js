@@ -1,7 +1,7 @@
 'use strict';
 
 var gulp = require('gulp'),
-	config = require('./config'),
+	path = require('./path'),
 	spritesmith = require('gulp.spritesmith'),
 	imagemin = require('gulp-imagemin'),
 	newer = require('gulp-newer'),
@@ -11,10 +11,10 @@ var gulp = require('gulp'),
 
 //sprite
 gulp.task('sprite', function () {
-	var spriteData = gulp.src(config.dev.img.sprite.src)
+	var spriteData = gulp.src(path.dev.img.sprite.src)
 		.pipe(spritesmith({
-			imgName: config.dev.img.sprite.imgName,
-			cssName: config.dev.img.sprite.fileName,
+			imgName: path.dev.img.sprite.imgName,
+			cssName: path.dev.img.sprite.fileName,
 			padding: 0, //px
 			algorithm: 'binary-tree' //top-down, left-right
 		}));
@@ -23,32 +23,32 @@ gulp.task('sprite', function () {
 			optimizationLevel: 3, // default val
 			progressive: true
 		}))
-		.pipe(gulp.dest(config.dev.img.sprite.imgDest));
+		.pipe(gulp.dest(path.dev.img.sprite.imgDest));
 	var cssStream = spriteData.css
-		.pipe(gulp.dest(config.dev.img.sprite.fileDest));
+		.pipe(gulp.dest(path.dev.img.sprite.fileDest));
 	//return spriteData.pipe(gulp.dest('dev/img'));
 });
 
 
 //image min + webp
 gulp.task('img', function() {
-	gulp.src(config.dev.img.original)
-	.pipe(newer(config.dev.img.ready))
+	gulp.src(path.dev.img.original)
+	.pipe(newer(path.dev.img.ready))
 	.pipe(imagemin({
 		optimizationLevel: 3, // default val
 		progressive: true
 	}))
-	.pipe(gulp.dest(config.dev.img.ready))
+	.pipe(gulp.dest(path.dev.img.ready))
 	.pipe(webp())
-	.pipe(gulp.dest(config.dev.img.ready));
+	.pipe(gulp.dest(path.dev.img.ready));
 });
 
 
 //base64
 gulp.task('base64', function () {
-    return gulp.src(config.dev.img.base64.srcFile)
+    return gulp.src(path.dev.img.base64.srcFile)
         .pipe(base64({
-			baseDir: config.dev.img.base64.srcImg
+			baseDir: path.dev.img.base64.srcImg
 		}))
-        .pipe(gulp.dest(config.dev.img.base64.dest));
+        .pipe(gulp.dest(path.dev.img.base64.dest));
 });

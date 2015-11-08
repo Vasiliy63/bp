@@ -1,12 +1,12 @@
 'use strict';
 
 var gulp = require('gulp'),
-	config = require('./config'),
+	path = require('./path'),
 	del = require('del');
 
 gulp.task('default', ['jade', 'sass', 'js', 'browser-sync', 'watch']);
 
 //remove gitkeep
 gulp.task('gitkeep', function() {
-	return del([config.dev.gitkeep]);
+	return del([path.dev.gitkeep]);
 });

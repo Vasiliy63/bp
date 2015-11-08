@@ -12,17 +12,17 @@ module.exports = {
 	},
 
 	dev: {
+		server: './',
+		font: ['dev/font/**/*', '!dev/font/**/*.{zip, rar}'],
+		gitkeep: 'dev/**/.gitkeep',
 		html: 'dev/html',
 		css: 'dev/css',
 		js: {
 			src: 'dev/js/main.js',
-			dest: 'dev/js/jsconcat'
+			dest: 'dev/js/concat'
 		},
-		font: ['dev/font/**/*', '!dev/font/**/*.{zip, rar}'],
 		jade: 'dev/jade/pages/**/*.jade',
 		sass: 'dev/sass/style.scss',
-		server: './',
-		gitkeep: 'dev/**/.gitkeep',
 
 		img: {
 			original: 'dev/img/original/*',
@@ -31,7 +31,7 @@ module.exports = {
 				src: 'dev/img/sprite/*.png',
 				imgName: 'sprite.png',
 				imgDest: 'dev/img/ready',
-				fileName: '_--sprite.scss',
+				fileName: '_sprite.scss',
 				fileDest: 'dev/sass/base'
 			},
 			base64: {
@@ -45,6 +45,6 @@ module.exports = {
 	watch: {
 		jade: 'dev/jade/**/*.jade',
 		sass: 'dev/sass/**/*.scss',
-		js: ["dev/js/**/*.js", "!dev/js/compile"]
+		js: ["dev/js/**/*.js", "!dev/js/concat/*"]
 	}
 }

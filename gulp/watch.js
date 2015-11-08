@@ -1,10 +1,10 @@
 'use strict';
 
 var gulp = require('gulp'),
-	config = require('./config');
+	path = require('./path');
 
 gulp.task('watch', function() {
-	gulp.watch(config.watch.jade, ['jade']);
-	gulp.watch(config.watch.sass, ['sass']);
-	gulp.watch(config.watch.js, ['js']);
+	gulp.watch(path.watch.jade, ['jade']);
+	gulp.watch(path.watch.sass, ['sass']);
+	gulp.watch(path.watch.js, ['js']);
 });

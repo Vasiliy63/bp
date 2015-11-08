@@ -1,7 +1,7 @@
 'use strict';
 
 var gulp = require('gulp'),
-	config = require('./config'),
+	path = require('./path'),
 	del = require('del'),
 	uglify = require('gulp-uglify'),
 	replace = require('gulp-replace-path'),
@@ -12,58 +12,57 @@ var gulp = require('gulp'),
 	jade = require('gulp-jade'),
 	postcss = require('gulp-postcss'),
 	webpcss = require("webpcss"),
-	lost = require('lost'),
-	pixrem = require('pixrem');
+	lost = require('lost');
 
 
 //clean build
 gulp.task('build:del', function () {
-	del(config.build.root);
+	del(path.build.root);
 });
 
 //build
 gulp.task('build', function () {
 	var processors = [
-		pixrem, lost, webpcss.default
+		lost, webpcss.default
 	];
 
-	gulp.src(config.dev.sass)
+	gulp.src(path.dev.sass)
 	.pipe(bulkSass())
 	.pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
 	.pipe(webpcss())
 	.pipe(replace('../img/ready', '../img'))
 	.pipe(postcss(processors))
 	.pipe(autoprefixer({ browsers: ['last 4 versions'], cascade: false }))
-	.pipe(gulp.dest(config.build.css))
+	.pipe(gulp.dest(path.build.css))
 
-	gulp.src(config.dev.jade)
+	gulp.src(path.dev.jade)
 	.pipe(jade())
 	.pipe(replace('../img/ready', 'img'))
 	.pipe(replace('../css', 'css'))
 	.pipe(replace('../js/jsconcat', 'js'))
 	.pipe(replace('../components/modernizr', 'js'))
-	.pipe(gulp.dest(config.build.root))
+	.pipe(gulp.dest(path.build.root))
 
-	gulp.src(config.dev.js.dest + '/*')
+	gulp.src(path.dev.js.dest + '/*')
 	.pipe(uglify())
-	.pipe(gulp.dest(config.build.js))
+	.pipe(gulp.dest(path.build.js))
 
 	gulp.src('dev/components/modernizr/modernizr.js')
-	.pipe(gulp.dest(config.build.js));
+	.pipe(gulp.dest(path.build.js));
 
-	var path = [
+	var copyPath = [
 		{
-			src: config.dev.font,
-			dest: config.build.font
+			src: path.dev.font,
+			dest: path.build.font
 		},
 		{
-			src: config.dev.img.ready + '/*',
-			dest: config.build.img
+			src: path.dev.img.ready + '/*',
+			dest: path.build.img
 		}
 	];
-	for (var i=0; i < path.length; i++) {
-		gulp.src(path[i].src)
-			.pipe(newer(path[i].dest))
-			.pipe(gulp.dest(path[i].dest));
+	for (var i=0; i < copyPath.length; i++) {
+		gulp.src(copyPath[i].src)
+			.pipe(newer(copyPath[i].dest))
+			.pipe(gulp.dest(copyPath[i].dest));
 	}
 });

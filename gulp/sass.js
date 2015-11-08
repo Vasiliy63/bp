@@ -1,7 +1,7 @@
 'use strict';
 
 var gulp = require('gulp'),
-	config = require('./config'),
+	path = require('./path'),
 	browserSync = require('browser-sync'),
 	reload = browserSync.reload,
 	sass = require('gulp-sass'),
@@ -16,17 +16,16 @@ var gulp = require('gulp'),
 
 gulp.task('sass', function () {
 
-	gulp.src(config.dev.sass)
+	gulp.src(path.dev.sass)
 	.pipe(plumber({errorHandler: notify.onError('<%= error.message %>')}))
 	.pipe(sourcemaps.init())
 	.pipe(bulkSass())
 	.pipe(sass({ outputStyle: 'extended' }).on('error', sass.logError))
 	.pipe(sourcemaps.write({includeContent: false}))
 	.pipe(sourcemaps.init({loadMaps: true}))
-	.pipe(webpcss())
 	.pipe(postcss([ lost, webpcss.default ]))
 	.pipe(autoprefixer({ browsers: ['last 3 versions'], cascade: false }))
 	.pipe(sourcemaps.write('./'))
-	.pipe(gulp.dest(config.dev.css))
+	.pipe(gulp.dest(path.dev.css))
 	.pipe(reload({stream: true}));
 });
