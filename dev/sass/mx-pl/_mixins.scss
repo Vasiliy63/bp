@@ -1,6 +1,12 @@
 // rem, em
-@function em($pxval, $base: $browser-fs){
-	@return ($pxval / $base) * 1em;
+@function em($pxval, $fs: null, $base: $browser-fs){
+	@if ( $fs ) {
+		$fs: $fs / ($fs * 0 + 1); // strip units
+		@return ($pxval / ($base * $fs)) * 1em;
+	}
+	@else {
+		@return ($pxval / $base) * 1em;
+	}
 }
 @function rem($pxval, $base: $browser-fs){
 	@return ($pxval / $base) * 1rem;

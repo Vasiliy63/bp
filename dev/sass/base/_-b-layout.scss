@@ -1,8 +1,8 @@
 .container {
 	@extend %cf;
 	@extend %center;
-	padding-left: $container-gutter;
-	padding-right: $container-gutter;
+	padding-left: rem($container-gutter);
+	padding-right: rem($container-gutter);
 	//media
 	@each $bp, $width in $container-mq-and-width {
 		@media (min-width: em($bp)) {

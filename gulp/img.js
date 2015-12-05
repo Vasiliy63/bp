@@ -15,7 +15,7 @@ gulp.task('sprite', function () {
 		.pipe(spritesmith({
 			imgName: path.dev.img.sprite.imgName,
 			cssName: path.dev.img.sprite.fileName,
-			padding: 0, //px
+			padding: 5, //px
 			algorithm: 'binary-tree' //top-down, left-right
 		}));
 	var imgStream = spriteData.img
@@ -23,6 +23,8 @@ gulp.task('sprite', function () {
 			optimizationLevel: 3, // default val
 			progressive: true
 		}))
+		.pipe(gulp.dest(path.dev.img.sprite.imgDest))
+		.pipe(webp())
 		.pipe(gulp.dest(path.dev.img.sprite.imgDest));
 	var cssStream = spriteData.css
 		.pipe(gulp.dest(path.dev.img.sprite.fileDest));

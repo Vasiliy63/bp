@@ -8,6 +8,14 @@ mixin og(ogtype, ogtitle, ogdesc, ogurl, ogimg, ogloc)
 	meta(property="og:locale" content=ogloc)
 
 
+//- webp
+mixin webp(path, picClass, alt)
+	- var pathSlice = path.slice(0, -4);
+	picture(class= picClass+'_pic')
+		source(srcset= pathSlice+'.webp', type='image/webp')
+		img(class= picClass+'_img', src= path, alt= alt ? alt : 'image')
+
+
 //- Seo
 mixin seo(desc, tags)
 	- if (desc)
@@ -32,14 +40,6 @@ mixin js(path)
 			script(src = val)
 		- else
 			script(src = val+'.js')
-
-
-//- webp
-mixin webp(path)
-	- var pathSlice = path.slice(0, -4);
-	picture
-		source(srcset= pathSlice+'.webp', type='image/webp')
-		img(src= path, alt="img")
 
 
 //- Favicons

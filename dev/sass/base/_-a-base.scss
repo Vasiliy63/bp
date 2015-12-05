@@ -11,8 +11,6 @@
 html {
     font-size: $html-fs;
 	background-color: $html-bg;
-	font-smoothing: antialiased; //safari smooth font
-	text-size-adjust: 100%; //prevent fs scale on ios safari
 
 	// change fs to vw items
 	@if $vw-scale {
@@ -22,6 +20,7 @@ html {
 			}
 		}
 	}
+
 }
 
 body {
@@ -29,6 +28,8 @@ body {
     font-family: $body-ff;
     color: $body-fc;
     line-height: $lh;
+	-webkit-font-smoothing: antialiased; // safari smooth font. prefix mandatory.
+	text-size-adjust: 100%; // prevent fs scale on ios safari
 }
 
 // Browserhappy

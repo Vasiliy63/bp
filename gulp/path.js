@@ -21,7 +21,7 @@ module.exports = {
 			src: 'dev/js/main.js',
 			dest: 'dev/js/concat'
 		},
-		jade: 'dev/jade/pages/**/*.jade',
+		jade: 'dev/block/page/pages/**/*.jade',
 		sass: 'dev/sass/style.scss',
 
 		img: {
@@ -43,8 +43,8 @@ module.exports = {
 	},
 
 	watch: {
-		jade: 'dev/jade/**/*.jade',
-		sass: 'dev/sass/**/*.scss',
-		js: ["dev/js/**/*.js", "!dev/js/concat/*"]
+		jade: ['!dev/jade/**/*.jade', 'dev/block/**/*.jade'],
+		sass: ['!dev/sass/**/*.scss', 'dev/block/**/*.scss'],
+		js: ["!dev/js/concat/*", "dev/js/**/*.js"]
 	}
 }
