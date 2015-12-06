@@ -22,30 +22,26 @@ gulp.task('build:del', function () {
 
 //build
 gulp.task('build', function () {
-	var processors = [
-		lost, webpcss.default
-	];
 
 	gulp.src(path.dev.sass)
 	.pipe(bulkSass())
 	.pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
-	.pipe(webpcss())
 	.pipe(replace('../img/ready', '../img'))
-	.pipe(postcss(processors))
+	.pipe(postcss([ lost, webpcss.default ]))
 	.pipe(autoprefixer({ browsers: ['last 4 versions'], cascade: false }))
-	.pipe(gulp.dest(path.build.css))
+	.pipe(gulp.dest(path.build.css));
 
 	gulp.src(path.dev.jade)
 	.pipe(jade())
 	.pipe(replace('../img/ready', 'img'))
 	.pipe(replace('../css', 'css'))
-	.pipe(replace('../js/jsconcat', 'js'))
+	.pipe(replace('../js/concat', 'js'))
 	.pipe(replace('../components/modernizr', 'js'))
-	.pipe(gulp.dest(path.build.root))
+	.pipe(gulp.dest(path.build.root));
 
-	gulp.src(path.dev.js.dest + '/*')
+	gulp.src(path.dev.js.dest + '/*.js')
 	.pipe(uglify())
-	.pipe(gulp.dest(path.build.js))
+	.pipe(gulp.dest(path.build.js));
 
 	gulp.src('dev/components/modernizr/modernizr.js')
 	.pipe(gulp.dest(path.build.js));

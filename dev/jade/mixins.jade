@@ -7,40 +7,12 @@ mixin og(ogtype, ogtitle, ogdesc, ogurl, ogimg, ogloc)
 	meta(property="og:image" content=ogimg)
 	meta(property="og:locale" content=ogloc)
 
-
 //- webp
 mixin webp(path, picClass, alt)
 	- var pathSlice = path.slice(0, -4);
 	picture(class= picClass+'_pic')
 		source(srcset= pathSlice+'.webp', type='image/webp')
 		img(class= picClass+'_img', src= path, alt= alt ? alt : 'image')
-
-
-//- Seo
-mixin seo(desc, tags)
-	- if (desc)
-		meta(name="description" content=desc)
-	- if (tags)
-		meta(name="keywords" content=tags)
-
-
-//- Css
-mixin css(path)
-	each val in path
-		- if (~val.indexOf('.css'))
-			link(rel="stylesheet", href = val)
-		- else
-			link(rel="stylesheet", href = val+'.css')
-
-
-//- Js
-mixin js(path)
-	each val in path
-		- if (~val.indexOf('.js'))
-			script(src = val)
-		- else
-			script(src = val+'.js')
-
 
 //- Favicons
 mixin favicon(path)
@@ -62,8 +34,6 @@ mixin favicon(path)
 	meta(name='msapplication-TileColor', content='#ffc40d')
 	meta(name='msapplication-TileImage', content='#{path}/mstile-144x144.png')
 	meta(name='msapplication-config', content='#{path}/browserconfig.xml')
-
-
 
 //- Browserhappy
 mixin browserhappy(lang)

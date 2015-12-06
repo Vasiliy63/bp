@@ -5,10 +5,9 @@
 @import 'config';
 
 // Base
-@import 'base/*';
-
-// Project
-@import 'project/*';
+//@import '../block/base/font.scss';
+//@import '../block/base/base.scss';
+//@import '../block/base/layout.scss';
 
 // Block
 @import '../block/**/*.scss';

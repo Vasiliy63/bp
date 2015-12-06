@@ -24,7 +24,7 @@ gulp.task('sass', function () {
 	.pipe(sourcemaps.write({includeContent: false}))
 	.pipe(sourcemaps.init({loadMaps: true}))
 	.pipe(postcss([ lost, webpcss.default ]))
-	.pipe(autoprefixer({ browsers: ['last 3 versions'], cascade: false }))
+	.pipe(autoprefixer({ browsers: ['last 4 versions'], cascade: false }))
 	.pipe(sourcemaps.write('./'))
 	.pipe(gulp.dest(path.dev.css))
 	.pipe(reload({stream: true}));

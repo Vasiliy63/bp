@@ -14,7 +14,8 @@ html(class='no-js', lang= page.lang)
 		// Title
 		title= page.title
 		// SEO
-		+seo(page.description, page.keywords)
+		meta(name="description" content= page.description)
+		meta(name="keywords" content= page.keywords)
 		// Favicon
 		//+favicon('img/favicon')
 		// OG

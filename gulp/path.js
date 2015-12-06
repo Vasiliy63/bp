@@ -21,7 +21,7 @@ module.exports = {
 			src: 'dev/js/main.js',
 			dest: 'dev/js/concat'
 		},
-		jade: 'dev/block/page/pages/**/*.jade',
+		jade: 'dev/block/page/**/*.jade',
 		sass: 'dev/sass/style.scss',
 
 		img: {
@@ -32,19 +32,19 @@ module.exports = {
 				imgName: 'sprite.png',
 				imgDest: 'dev/img/ready',
 				fileName: '_sprite.scss',
-				fileDest: 'dev/sass/base'
+				fileDest: 'dev/block/base'
 			},
 			base64: {
 				srcImg: 'dev/img/base64',
-				srcFile: 'dev/sass/base/_base64.scss',
-				dest: 'dev/sass/base'
+				srcFile: 'dev/block/base/_base64.scss',
+				dest: 'dev/block/base'
 			}
 		}
 	},
 
 	watch: {
-		jade: ['!dev/jade/**/*.jade', 'dev/block/**/*.jade'],
-		sass: ['!dev/sass/**/*.scss', 'dev/block/**/*.scss'],
-		js: ["!dev/js/concat/*", "dev/js/**/*.js"]
+		jade: ['dev/block/**/*.jade'],
+		sass: ['dev/block/**/*.scss'],
+		js: ["dev/js/**/*.js", "dev/block/**/*.js", "!dev/js/concat/*.js"]
 	}
 }
