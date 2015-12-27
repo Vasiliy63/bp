@@ -1,13 +1,8 @@
 // Mixins and Placeholders
-@import 'mx-pl/*';
+@import 'mx-pl/*.scss';
 
 // Config
 @import 'config';
-
-// Base
-//@import '../block/base/font.scss';
-//@import '../block/base/base.scss';
-//@import '../block/base/layout.scss';
 
 // Block
 @import '../block/**/*.scss';

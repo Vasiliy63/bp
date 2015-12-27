@@ -4,7 +4,7 @@
 	padding-left: rem($container-gutter);
 	padding-right: rem($container-gutter);
 	//media
-	@each $bp, $width in $container-mq-and-width {
+	@each $bp, $width in $container {
 		@media (min-width: em($bp)) {
 			max-width: rem($width);
 		}

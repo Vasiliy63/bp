@@ -37,7 +37,7 @@ $w1366: 1366px;
 * px переведены в em
 * ***
 */
-$container-mq-and-width: (
+$container: (
 	$w480: 400px,
 	$w640: 500px,
 	$w768: 600px,
@@ -50,36 +50,3 @@ $container-gutter: 10px;
 * Начиная с ширины `w1366` `html {font-size 1em}` меняется на коэфициент 1.25vw
 */
 $vw-scale: ($w1366: 1.25vw);
-
-
-
-// Components
-// ----------------
-
-//lost
-//@lost gutter 0;
-
-//jeet
-//@import "../components/jeet.gs/scss/jeet/index";
-//$jeet-gutter: 0; // override jeet default gutters
-
-// breakpoint
-//@import "../components/breakpoint-sass/stylesheets/breakpoint";
-//@mixin bp ($args...) {
-//	@include breakpoint($args...) {
-//		@content
-//	}
-//}
-
-// normalize
-//@import '../components/normalize/normalize';
-
-// reset
-//$body-lh: null;
-//@import '../components/reset/reset';
-
-// bootstrap
-//$box-sizing: false;
-
-// print
-//@import '../components/print/print';
