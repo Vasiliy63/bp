@@ -29,14 +29,3 @@ body {
 	-webkit-font-smoothing: antialiased; // safari smooth font. prefix mandatory.
 	text-size-adjust: 100%; // prevent fs scale on ios safari
 }
-
-// Browserhappy
-.browsehappy {
-    position: relative;
-	z-index: 1000;
-	margin: 0;
-	padding: 1em;
-    background: #fff;
-    color: #000;
-	font-style: normal;
-}
