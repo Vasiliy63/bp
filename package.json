@@ -35,20 +35,5 @@
     "lost": "^6.5.0",
     "require-dir": "^0.3.0",
     "webpcss": "^1.1.0"
-  },
-  "//": "config for generator-yeogurt",
-  "config": {
-    "directories": {
-      "source": "dev",
-      "destination": "build",
-      "temporary": "tmp",
-      "//": "Directories relative to `source` directory",
-      "modules": "block",
-      "layouts": "_layouts",
-      "images": "_images",
-      "styles": "_styles",
-      "scripts": "_scripts",
-      "data": "_data"
-    }
   }
 }
