@@ -32,12 +32,12 @@ module.exports = {
 				imgName: 'sprite.png',
 				imgDest: 'dev/img/ready',
 				fileName: '_sprite.scss',
-				fileDest: 'dev/block/base'
+				fileDest: 'dev/block/#base'
 			},
 			base64: {
 				srcImg: 'dev/img/base64',
-				srcFile: 'dev/block/base/_base64.scss',
-				dest: 'dev/block/base'
+				srcFile: 'dev/block/#base/_base64.scss',
+				dest: 'dev/block/#base'
 			}
 		}
 	},
