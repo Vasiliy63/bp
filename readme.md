@@ -1,18 +1,21 @@
 # Front
 ***
 ## Сборка, gulp
-gulp ['jade', 'sass', 'js', 'browser-sync', 'watch']
-gulp img
-gulp sprite
-gulp base64
-gulp build
-gulp build:del
+gulp ['jade', 'sass', 'js', 'browser-sync', 'watch']  
+gulp img  
+gulp sprite  
+gulp base64  
+gulp build  
+gulp build:del  
 gulp gitkeep	// rm gitkeep files
 
 ## Libs
-см bower.js
+см bower.json
 
-## Сетка: Lost; MediaQuery mixin shortcut bp();
+## CSS
+### SCSS
+### Сетка Lost
+[https://github.com/peterramsing/lost](https://github.com/peterramsing/lost)
 
 ## Адаптив, точки
 $w480: 480px;
