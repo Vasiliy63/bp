@@ -7,13 +7,12 @@ html {
 }
 
 html {
-    font-size: $html-fs;
 	background-color: $html-bg;
 
 	// change fs to vw items
 	@if $vw-scale {
-		@each $bp, $vw in $vw-scale{
-			@media (min-width: em($bp)) {
+		@each $media, $vw in $vw-scale{
+			@media (min-width: em($media)) {
 				font-size: $vw;
 			}
 		}
@@ -22,10 +21,10 @@ html {
 }
 
 body {
-    font-size: $body-fs;
-    font-family: $body-ff;
-    color: $body-fc;
-    line-height: $lh;
+	font-family: $body-ff;
+	font-size: $body-fs;
+	color: $body-fc;
+	line-height: $body-lh;
 	-webkit-font-smoothing: antialiased; // safari smooth font. prefix mandatory.
 	text-size-adjust: 100%; // prevent fs scale on ios safari
 }

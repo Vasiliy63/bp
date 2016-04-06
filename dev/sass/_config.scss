@@ -2,12 +2,11 @@
 
 // Base Settings
 $browser-fs: 16px; // used for rem, em functions
-$html-fs: 1em;
-$body-fs: 1rem;
 $html-bg: #fff;
-$body-fc: #000;
 $body-ff: Arial, sans-serif;
-$lh: 1.1;
+$body-fs: 1em;
+$body-fc: #000;
+$body-lh: 1.1;
 
 
 // Responsive
@@ -23,7 +22,7 @@ $w1280: 1280px;
 $w1366: 1366px;
 $w1440: 1440px;
 
-// контейнеры
+// контейнеры (media: width)
 $container: (
 	$w480: 400px,
 	$w640: 450px,
