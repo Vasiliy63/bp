@@ -7,8 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://rosivanov:jfd?7cn:bu^H-jfd@github.com/rosivanov/bp.git"
+    "type": "git"
   },
   "author": "",
   "license": "ISC",
