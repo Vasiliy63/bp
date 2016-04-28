@@ -4,6 +4,7 @@ var gulp = require('gulp'),
 	path = require('./path'),
 	spritesmith = require('gulp.spritesmith'),
 	imagemin = require('gulp-imagemin'),
+    buffer = require('vinyl-buffer'),
 	newer = require('gulp-newer'),
 	base64 = require('gulp-base64'),
 	webp = require('gulp-webp');
@@ -19,6 +20,7 @@ gulp.task('sprite', function () {
 			algorithm: 'binary-tree' //top-down, left-right
 		}));
 	var imgStream = spriteData.img
+        .pipe(buffer())
 		.pipe(imagemin({
 			optimizationLevel: 3, // default val
 			progressive: true
