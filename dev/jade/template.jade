@@ -25,15 +25,19 @@ html(class='no-js', lang= page.lang)
 		// Styles
 		block styles
 			link(rel="stylesheet", href="../css/style.css")
-		// Scripts In Head
+        // /Styles
+
+		// JS Head
 		block jshead
 			script(src="../components/modernizr/modernizr.js")
+        // /JS Head
 
 	body
 		+browserhappy(page.lang)
 
 		block content
 
-		// Scripts In Footer
+		// JS Footer
 		block jsfooter
 			script(src='../js/concat/main.js')
+        // /JS Footer
