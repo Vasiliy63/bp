@@ -4,7 +4,8 @@
   "description": "boilerplate",
   "main": "gulpfile.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+	"modernizr": "modernizr --config modernizr-config.json --dest dev/components/modernizr/ --uglify"
   },
   "repository": {
     "type": "git",
