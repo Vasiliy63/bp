@@ -1,9 +1,13 @@
 // Font
+$font_default: 'Arial', sans-serif;
+// usage
+// $customfont: 'customfont', $font_default;
+// $body-ff: $customfont;
 
 // Base Settings
 $browser-fs: 16px; // used for rem, em functions
 $html-bg: #fff;
-$body-ff: Arial, sans-serif;
+$body-ff: $font_default;
 $body-fs: 1em;
 $body-fc: #000;
 $body-lh: 1.1;
