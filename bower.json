@@ -17,7 +17,6 @@
     "breakpoint-sass": "^2.7.0"
   },
   "dependencies": {
-    "modernizr": "https://gist.github.com/0e08377509410c71d45a.git",
     "normalize-css": "^4.1.1"
   }
 }
