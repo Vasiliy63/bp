@@ -1,8 +1,8 @@
 # Front
 
 ## Старт
-```npm install && bower install && npm install -g modernizr && npm run-script modernizr```  
-```gulp```
++ `npm install && bower install && npm install -g modernizr && npm run-script modernizr`  
++ `gulp`
 
 ## Сборка
 
