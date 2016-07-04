@@ -1,21 +1,25 @@
+// ==========
 // Font
+// ==========
 $font_default: 'Arial', sans-serif;
 // usage
-// $customfont: 'customfont', $font_default;
-// $body-ff: $customfont;
+$customfont: 'customfont', $font_default;
+$body-ff: $customfont;
 
+
+// ==========
 // Base Settings
+// ==========
 $browser-fs: 16px; // used for rem, em functions
 $html-bg: #fff;
-$body-ff: $font_default;
-$body-fs: 1em;
 $body-fc: #000;
 $body-lh: 1.1;
 
 
+// ==========
 // Responsive
-// rem для всего, em внутри компонентов
 // em в media queries считается от базового fs браузера, который меняется только через настройки
+// ==========
 
 // точки
 $w480: 480px;
@@ -27,19 +31,25 @@ $w1366: 1366px;
 $w1440: 1440px;
 
 // контейнеры (media: width)
+$container-gutter: 10px;
 $container: (
 	$w480: 400px,
 	$w640: 450px,
 	$w768: 600px,
 	$w1024: 700px,
-	$w1280: 1000px,
+	$w1280: 1000px + $container-gutter,
 	$w1366: 1200px
 );
-$container-gutter: 10px;
 
 // Начиная с ширины `w1440` добавляется коэфициент `html {font-size 1.25vw}`
 $vw-scale: ($w1440: 1.25vw);
 
-// Project variables
 
+// ==========
+// Project variables
+// ==========
+
+
+// ==========
 // Abstract class
+// ==========

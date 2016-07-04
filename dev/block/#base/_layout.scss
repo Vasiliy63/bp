@@ -1,5 +1,4 @@
 .container {
-	@extend %cf;
 	@extend %center;
 	padding-left: rem($container-gutter);
 	padding-right: rem($container-gutter);

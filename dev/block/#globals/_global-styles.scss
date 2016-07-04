@@ -22,9 +22,16 @@ html {
 
 body {
 	font-family: $body-ff;
-	font-size: $body-fs;
 	color: $body-fc;
 	line-height: $body-lh;
 	-webkit-font-smoothing: antialiased; // safari smooth font. prefix mandatory.
 	text-size-adjust: 100%; // prevent fs scale on ios safari
 }
+
+.cf {
+	@extend %cf;
+}
+
+// ==========
+// Project global styles
+// ==========
