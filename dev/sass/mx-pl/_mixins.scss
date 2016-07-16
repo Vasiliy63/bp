@@ -1,26 +1,48 @@
-// rem, em
-@function em($pxval, $fs: null, $base: $browser-fs){
-	@if ( $fs and unit($fs) == 'em') {
-		$fs: $fs / ($fs * 0 + 1); // strip units
-		@return ($pxval / ($base * $fs)) * 1em;
+// strip units
+@function strip_unit ($number) {
+	@if unitless($number) {
+		@debug 'Number is unitless!';
+		@return $number;
 	}
-    @else if ( $fs and unit($fs) == 'px') {
-        @return ($pxval / $fs) * 1em;
-    }
 	@else {
-		@return ($pxval / $base) * 1em;
+		@return $number / ($number * 0 + 1);
 	}
 }
-@function rem($pxval, $base: $browser-fs){
-	@return ($pxval / $base) * 1rem;
-}
-//rem fallback, exmp [ @include rem(font-size 20px, width 100px) ]
-@mixin rem($properties...){
-	@each $prop, $val in $properties {
-		#{$prop}: $val;
-		#{$prop}: rem($val);
+
+
+// em
+@function em($pxval, $fs: null, $ie: false, $base: $browser-fs){
+	$emval: 0;
+
+	@if $fs and unit($fs) == 'em' {
+		$fs: strip_unit($fs);
+		$emval: ($pxval / ($base * $fs)) * 1em;
+
+		@if $ie { @return calc((#{ strip_unit($pxval) } / #{ strip_unit($base) * $fs}) * 1em); } // ie calc trick
 	}
+
+    @else if $fs and unit($fs) == 'px' {
+		$emval: ($pxval / $fs) * 1em;
+		@if $ie { @return calc((#{ strip_unit($pxval) } / #{ strip_unit($fs) }) * 1em); } // ie calc trick
+    }
+
+	@else {
+		$emval: ($pxval / $base) * 1em;
+		@if $ie { @return calc((#{ strip_unit($pxval) } / #{ strip_unit($base) }) * 1em); } // ie calc trick
+	}
+
+	@return $emval;
 }
+
+// rem
+@function rem($pxval, $ie: false, $base: $browser-fs){
+	$remval: ($pxval / $base) * 1rem;
+
+	@if $ie { @return calc((#{ strip_unit($pxval) } / #{ strip_unit($base) }) * 1em); } // ie calc trick
+
+	@return $remval;
+}
+
 
 // retina
 @mixin retina {
