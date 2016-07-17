@@ -30,15 +30,20 @@ $w1280: 1280px;
 $w1366: 1366px;
 $w1440: 1440px;
 
-// контейнеры (media: width)
-$container-gutter: 10px;
-$container: (
-	$w480: 400px,
-	$w640: 450px,
-	$w768: 600px,
-	$w1024: 700px,
-	$w1280: 1000px + $container-gutter,
-	$w1366: 1200px
+// контейнеры
+$containers: (
+
+	container:
+	(gutter: 10px)
+	(
+		$w480: 400px,
+		$w640: 450px,
+		$w768: 600px,
+		$w1024: 700px,
+		$w1280: 1000px,
+		$w1366: 1200px
+	),
+
 );
 
 // Начиная с ширины `w1440` добавляется коэфициент `html {font-size 1.25vw}`

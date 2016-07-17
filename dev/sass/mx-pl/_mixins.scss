@@ -1,7 +1,6 @@
 // strip units
 @function strip_unit ($number) {
 	@if unitless($number) {
-		@debug 'Number is unitless!';
 		@return $number;
 	}
 	@else {
@@ -13,22 +12,24 @@
 // em
 @function em($pxval, $fs: null, $ie: false, $base: $browser-fs){
 	$emval: 0;
+	$pxval: strip_unit($pxval);
+	$base: strip_unit($base);
 
 	@if $fs and unit($fs) == 'em' {
 		$fs: strip_unit($fs);
 		$emval: ($pxval / ($base * $fs)) * 1em;
-
-		@if $ie { @return calc((#{ strip_unit($pxval) } / #{ strip_unit($base) * $fs}) * 1em); } // ie calc trick
+		@if $ie { @return calc((#{$pxval} / (#{$base * $fs})) * 1em); } // ie calc trick
 	}
 
     @else if $fs and unit($fs) == 'px' {
+		$fs: strip_unit($fs);
 		$emval: ($pxval / $fs) * 1em;
-		@if $ie { @return calc((#{ strip_unit($pxval) } / #{ strip_unit($fs) }) * 1em); } // ie calc trick
+		@if $ie { @return calc((#{$pxval} / #{$fs}) * 1em); } // ie calc trick
     }
 
 	@else {
 		$emval: ($pxval / $base) * 1em;
-		@if $ie { @return calc((#{ strip_unit($pxval) } / #{ strip_unit($base) }) * 1em); } // ie calc trick
+		@if $ie { @return calc((#{$pxval} / #{$base}) * 1em); } // ie calc trick
 	}
 
 	@return $emval;
@@ -36,9 +37,11 @@
 
 // rem
 @function rem($pxval, $ie: false, $base: $browser-fs){
-	$remval: ($pxval / $base) * 1rem;
+	$pxval: strip_unit($pxval);
+	$base: strip_unit($base);
 
-	@if $ie { @return calc((#{ strip_unit($pxval) } / #{ strip_unit($base) }) * 1em); } // ie calc trick
+	$remval: ($pxval / $base) * 1rem;
+	@if $ie { @return calc((#{$pxval} / #{$base}) * 1em); } // ie calc trick
 
 	@return $remval;
 }

@@ -1,11 +1,28 @@
-.container {
-	@extend %center;
-	padding-left: rem($container-gutter);
-	padding-right: rem($container-gutter);
-	//media
-	@each $media, $width in $container {
-		@media (min-width: em($media)) {
-			max-width: rem($width);
+@each $container_name, $gutter_and_media in $containers {
+	$gutter_per_centainer: map-get(nth($gutter_and_media, 1), gutter);
+
+	.#{$container_name} {
+		@extend %center;
+		padding-left: rem($gutter_per_centainer);
+		padding-right: rem($gutter_per_centainer);
+
+		@each $media, $width in nth($gutter_and_media, 2) {
+			$gutter_per_media: 0;
+			@if type-of($width) == list {
+				$gutter_per_media: nth($width, 2);
+			}
+			@else {
+				$gutter_per_media: $gutter_per_centainer;
+			}
+
+			@media (min-width: em($media)) {
+				max-width: rem(nth($width,1) + ($gutter_per_media * 2));
+
+				padding-left: rem($gutter_per_media);
+				padding-right: rem($gutter_per_media);
+			}
+
 		}
 	}
+
 }
