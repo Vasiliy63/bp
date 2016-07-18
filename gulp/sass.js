@@ -12,7 +12,8 @@ var gulp = require('gulp'),
 	plumber = require('gulp-plumber'),
 	postcss = require('gulp-postcss'),
 	webpcss = require("webpcss"),
-	lost = require('lost');
+	lost = require('lost'),
+	postcss_pe = require('postcss-pe');
 
 gulp.task('sass', function () {
 
@@ -23,7 +24,7 @@ gulp.task('sass', function () {
 	.pipe(sass({ outputStyle: 'extended' }).on('error', sass.logError))
 	.pipe(sourcemaps.write({includeContent: false}))
 	.pipe(sourcemaps.init({loadMaps: true}))
-	.pipe(postcss([ lost, webpcss.default ]))
+	.pipe(postcss([ lost, webpcss.default, postcss_pe ]))
 	.pipe(autoprefixer({ browsers: ['last 4 versions'], cascade: false }))
 	.pipe(sourcemaps.write('./'))
 	.pipe(gulp.dest(path.dev.css))

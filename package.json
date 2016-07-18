@@ -5,7 +5,7 @@
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-	"modernizr": "modernizr --config modernizr-config.json --dest dev/components/modernizr/ --uglify"
+    "modernizr": "modernizr --config modernizr-config.json --dest dev/components/modernizr/ --uglify"
   },
   "repository": {
     "type": "git",
@@ -14,29 +14,30 @@
   "author": "ros ivanov",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "^2.12.3",
-    "del": "^2.2.0",
+    "browser-sync": "^2.13.0",
+    "del": "^2.2.1",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-base64": "^0.1.3",
     "gulp-imagemin": "^2.4.0",
-    "gulp-include": "^2.1.0",
+    "gulp-include": "^2.3.0",
     "gulp-jade": "^1.1.0",
-    "gulp-newer": "^1.1.0",
+    "gulp-newer": "^1.2.0",
     "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.1.0",
-    "gulp-postcss": "^6.1.0",
+    "gulp-postcss": "^6.1.1",
     "gulp-replace-path": "^0.4.0",
-    "gulp-sass": "^2.2.0",
+    "gulp-sass": "^2.3.2",
     "gulp-sass-bulk-import": "^1.0.1",
     "gulp-sourcemaps": "^1.6.0",
-    "gulp-uglify": "^1.5.3",
+    "gulp-uglify": "^1.5.4",
     "gulp-webp": "^2.3.0",
     "gulp.spritesmith": "^6.2.1",
-    "lost": "^6.7.2",
+    "lost": "^6.8.1",
+    "postcss-pe": "^1.0.0",
     "require-dir": "^0.3.0",
     "vinyl-buffer": "^1.0.0",
-    "webpcss": "^1.1.1"
+    "webpcss": "^1.1.2"
   },
   "dependencies": {}
 }
