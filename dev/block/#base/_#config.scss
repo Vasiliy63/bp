@@ -33,10 +33,9 @@ $w1440: 1440px;
 // контейнеры
 $containers: (
 
-	container:
-	(gutter: 10px)
+	container: (gutter: 10px) // default gutter per container
 	(
-		$w480: 400px,
+		$w480: 400px, // 400px 20px gutter per break
 		$w640: 450px,
 		$w768: 600px,
 		$w1024: 700px,
