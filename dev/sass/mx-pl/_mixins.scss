@@ -40,10 +40,6 @@
 
 // HOVER
 @mixin hover { &:hover, &:active { @content } }
-@mixin focus { &:focus { @content } }
-
-// SMOOTH
-@mixin smooth($int: .3s, $prop: all) { transition: $prop $int; }
 
 // webp
 @mixin webp($path) {
