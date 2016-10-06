@@ -1,5 +1,5 @@
 // Mixins and Placeholders
-@import 'mx-pl/*.scss';
+@import '_mixin.scss', '_placeholder.scss';
 
 // Block
 @import '../block/**/*.scss';
