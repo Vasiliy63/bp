@@ -6,8 +6,8 @@ var gulp = require('gulp'),
 	imagemin = require('gulp-imagemin'),
     buffer = require('vinyl-buffer'),
 	newer = require('gulp-newer'),
-	base64 = require('gulp-base64'),
-	webp = require('gulp-webp');
+	base64 = require('gulp-base64');
+	//webp = require('gulp-webp');
 
 
 //sprite
@@ -25,9 +25,9 @@ gulp.task('sprite', function () {
 			optimizationLevel: 3, // default val
 			progressive: true
 		}))
-		.pipe(gulp.dest(path.dev.img.sprite.imgDest))
-		.pipe(webp())
 		.pipe(gulp.dest(path.dev.img.sprite.imgDest));
+		//.pipe(webp())
+		//.pipe(gulp.dest(path.dev.img.sprite.imgDest));
 	var cssStream = spriteData.css
 		.pipe(gulp.dest(path.dev.img.sprite.fileDest));
 	//return spriteData.pipe(gulp.dest('dev/img'));
@@ -42,9 +42,9 @@ gulp.task('img', function() {
 		optimizationLevel: 3, // default val
 		progressive: true
 	}))
-	.pipe(gulp.dest(path.dev.img.ready))
-	.pipe(webp())
 	.pipe(gulp.dest(path.dev.img.ready));
+	//.pipe(webp())
+	//.pipe(gulp.dest(path.dev.img.ready));
 });
 
 
