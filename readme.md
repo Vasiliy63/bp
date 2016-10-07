@@ -17,9 +17,9 @@ gulp gitkeep	// rm gitkeep files
 
 ### modernizr
 + npm install -g modernizr  
-+ билд modernizr: ```npm run-script modernizr``` или ```modernizr --config modernizr-config.json --dest dev/components/modernizr/ --uglify```  
-+ пример modernizr-config.json есть в modernizr модуле npm/node_modules/modernizr/lib/config-all.json  
++ добавить файл modernizr-config.json в /root Пример файла https://gist.github.com/rosivanov/58541f2126e63d91bb89db89ff286ad1 или есть в modernizr модуле npm/node_modules/modernizr/lib/config-all.json  
 + в modernizr-config.json ненужные проверки закомментированы, чтобы добавить проверку нужно найти и перенести нужную строку в 'feature-detects', затем выполнить npm run-script modernizr  
++ билд modernizr ```npm run-script modernizr``` или ```modernizr --config modernizr-config.json --dest dev/components/modernizr/ --uglify```  
 
 ## Libs
 см bower.json
