@@ -11,13 +11,14 @@ var gulp = require('gulp'),
 	autoprefixer = require('gulp-autoprefixer'),
 	jade = require('gulp-jade'),
 	postcss = require('gulp-postcss'),
-	webpcss = require("webpcss"),
+	//webpcss = require("webpcss"),
 	lost = require('lost');
 
 
 //clean build
 gulp.task('build:del', function () {
-	del(path.build.root);
+	return del(path.build.root);
+	// return для выполнение build:del перед таском build, иначе таски выполняются параллельно
 });
 
 //build
@@ -27,7 +28,8 @@ gulp.task('build', function () {
 	.pipe(bulkSass())
 	.pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
 	.pipe(replace('../img/ready', '../img'))
-	.pipe(postcss([ lost, webpcss.default ]))
+	//.pipe(postcss([ lost, webpcss.default ]))
+	.pipe(postcss([ lost ]))
 	.pipe(autoprefixer({ browsers: ['last 4 versions'], cascade: false }))
 	.pipe(gulp.dest(path.build.css));
 
@@ -36,15 +38,15 @@ gulp.task('build', function () {
 	.pipe(replace('../img/ready', 'img'))
 	.pipe(replace('../css', 'css'))
 	.pipe(replace('../js/concat', 'js'))
-	.pipe(replace('../components/modernizr', 'js'))
+	//.pipe(replace('../components/modernizr', 'js'))
 	.pipe(gulp.dest(path.build.root));
 
 	gulp.src(path.dev.js.dest + '/*.js')
 	.pipe(uglify())
 	.pipe(gulp.dest(path.build.js));
 
-	gulp.src('dev/components/modernizr/modernizr.js')
-	.pipe(gulp.dest(path.build.js));
+	//gulp.src('dev/components/modernizr/modernizr.js')
+	//.pipe(gulp.dest(path.build.js));
 
 	var copyPath = [
 		{
@@ -52,7 +54,7 @@ gulp.task('build', function () {
 			dest: path.build.font
 		},
 		{
-			src: path.dev.img.ready + '/*',
+			src: path.dev.img.ready + '/**/*',
 			dest: path.build.img
 		}
 	];
