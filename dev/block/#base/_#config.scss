@@ -31,19 +31,14 @@ $w1366: 1366px;
 $w1440: 1440px;
 
 // контейнеры
-$containers: (
-
-	container: (gutter: 10px) // default gutter per container
+$containers:
 	(
-		$w480: 400px, // 400px 20px gutter per break
-		$w640: 450px,
-		$w768: 600px,
-		$w1024: 700px,
-		$w1280: 1000px,
-		$w1366: 1200px
-	),
-
-);
+		container, // classname
+		10px, // default gutter [px or 0]
+		$w768 700px 20px, // breakpoint width [gutter]
+		$w1280 1180px
+	)
+	null; // need null when single container
 
 // Начиная с ширины `w1440` добавляется коэфициент `html {font-size 1.25vw}`
 $vw-scale: ($w1440: 1.25vw);
