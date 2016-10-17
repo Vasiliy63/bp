@@ -14,6 +14,10 @@
 
 // rem
 @function rem($pxval, $base: $browser-fs) {
+	// strip units if $pxval is unitless
+	$pxval: $pxval / ($pxval * 0 + 1);
+	$base: $base / ($base * 0 + 1);
+
 	@return ($pxval / $base) * 1rem;
 }
 
