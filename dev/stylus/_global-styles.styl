@@ -1,0 +1,33 @@
+// box-sizing reset
+*, *:after, *:before
+	box-sizing: inherit
+html
+	box-sizing: border-box
+
+html
+	background-color: $html_bg
+
+	// change fs to vw items
+	if vw_scale is defined
+		@media (min-width: vw_scale[0])
+			font-size: vw_scale[1]
+
+body
+	font-family: body_font
+	color: body_color
+	line-height: body_lh
+	// safari smooth font. prefix mandatory.
+	-webkit-font-smoothing: antialiased
+	// prevent fs scale on ios safari
+	text-size-adjust: 100%
+
+.cf
+	@extend $cf
+
+// ==========
+// Project global styles
+// ==========
+
+// ==========
+// Abstract class
+// ==========

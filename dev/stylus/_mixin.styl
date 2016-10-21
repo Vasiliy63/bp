@@ -1,0 +1,36 @@
+// em
+em(pxval, fs= false, base= browser_fs)
+	if fs and unit(fs) == 'em'
+		(pxval / (base * fs))em
+	else if fs and unit(fs) == 'px'
+		(pxval / fs)em
+	else
+		(pxval / base)em
+
+
+// rem
+rem(pxval, base= browser_fs)
+	(pxval / base)rem
+
+
+// retina
+retina()
+	@media only screen and (-webkit-min-device-pixel-ratio: 2),
+	only screen and (min--moz-device-pixel-ratio: 2),
+	only screen and (-o-min-device-pixel-ratio: (:div 2 1)),
+	only screen and (min-device-pixel-ratio: 2),
+	only screen and (min-resolution: 192dpi),
+	only screen and (min-resolution: 2dppx)
+		{block}
+
+// PLACEHOLDER COLOR
+pl()
+	$placeholders = ":-webkit-input" ":-moz" "-moz" "-ms-input"
+	for $placeholder in $placeholders
+		&:{$placeholder}-placeholder
+			{block}
+
+// HOVER
+hover()
+	&:hover, &:active
+		{block}

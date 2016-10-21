@@ -1,0 +1,29 @@
+w = {
+	'480': 480px,
+	'640': 640px,
+	'768': 768px
+}
+
+containers = {
+	contaiener: {
+		default_gutter: 10px,
+		breakpoints: {
+			'480': 400px,
+			'640': 600px 20px,
+			'768': 700px 30px
+		}
+	}
+}
+
+for container_classname, container in containers
+	.{container_classname}
+		@extend $cf
+		padding-left: rem(container.default_gutter)
+		padding-right: rem(container.default_gutter)
+
+		for media, width in container.breakpoints
+			gutter = length(width) == 2 ? width[1] : container.default_gutter
+			@media (min-width: w[media])
+				max-width: rem(width[0] + gutter * 2)
+				padding-left: rem(gutter)
+				padding-right: rem(gutter)
