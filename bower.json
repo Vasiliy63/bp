@@ -1,9 +1,6 @@
 {
   "name": "bp",
   "version": "0.0.1",
-  "authors": [
-    "rosivanov <ros.g6w@gmail.com>"
-  ],
   "license": "MIT",
   "private": true,
   "ignore": [
